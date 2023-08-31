@@ -4,42 +4,46 @@ class bank {
         this.saldoOutput = document.getElementById("saldooutput")
         this.saldoOutput.textContent = this.saldo
     }
-
-    time(second) {
+    isNumeric = (n,time) => {
         return new Promise((resolve,reject) => {
-            if (typeof(second) === 'number') {
-                setTimeout(() =>{
-                    resolve()
-                },second)
-            } else {
-                reject(new Error('second parameter is not number!'))
+            if (/^[0-9]+$/.test(n)) {
+                setTimeout(() => {resolve()},time)
+            }else {
+                reject(new Error("tolong masukan angka"))
             }
         })
     }
 
-    async deposit(amount = () => prompt('Masukan jumlah saldo yang ingin anda tambahkan : '), isnumeric = (n) => /^[0-9]+$/.test(n)) {
-        
-        let nominal = amount()
-        console.log(nominal)
-        await this.time(1000)
-        if (isnumeric(nominal)) {
-        this.saldo += Number(nominal)
-        this.saldoOutput.textContent = this.saldo
+    async deposit(amount = () => prompt('Masukan jumlah saldo yang ingin anda tambahkan : ')) {
+        try{
+            let nominal = amount()
+            if (nominal) {
+            await this.isNumeric(nominal,1000)
+            this.saldo += Number(nominal)
+            this.saldoOutput.textContent = this.saldo
         } else {
-            throw new Error("masukan yang  benarww")
+            throw new Error("Belum memasukan angka!")
+        }
+        } catch (err){
+            console.log(err);
         }
     }
 
     async withdraw(amount = () => prompt('Masukan jumlah saldo yang ingin anda ambil : '), isnumeric = (n) => /^[0-9]+$/.test(n)) {
-
-        let nominal = amount()
-        console.log(nominal)
-        await this.time(1000)
-        if (isnumeric(nominal)) {
-        this.saldo -= Number(nominal)
-        this.saldoOutput.textContent = this.saldo
-        } else {
-            throw new Error("masukan yang  benarww")
+        try{
+            let nominal = amount()
+            if (nominal) {
+                if (nominal>this.saldo) {
+                    throw new Error("Saldo anda tidak cukup! ")
+                }
+                await this.isNumeric(nominal,1000)
+                this.saldo -= Number(nominal)
+                this.saldoOutput.textContent = this.saldo
+            } else {
+                throw new Error("Belum memasukan angka!")
+        }
+        } catch (err){
+            console.log(err);
         }
     }
 
@@ -48,16 +52,11 @@ class bank {
 bank1 = new bank()
 
 
-
-try{
-depoButton.addEventListener("click", function() {
+depoButton.addEventListener("click", async function() {
     bank1.deposit();
 });
-wdButton.addEventListener("click", function() {
+wdButton.addEventListener("click", async function() {
     bank1.withdraw();
-});
-}
-catch (error){
-    console.log(error);
-}
+}); 
+
 
