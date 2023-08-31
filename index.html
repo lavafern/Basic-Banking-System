@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <style>
+        body {
+            background-color: rgb(33, 33, 33);
+        }
+        .view{
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            height: 50vh;
+            padding-top: 10px;
+            
+        }
+        .view button {
+            margin: 50px; 
+            padding: 10px 20px
+        }
+        .saldoview{
+
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            padding-top: 100px;
+            
+        }
+
+        .card {
+            box-shadow: 0 0 30px 10px #701364;
+            
+        }
+
+
+        .card-body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: xx-large;
+            font-weight: bolder;
+            background-color: rgb(148, 58, 131);
+        }
+
+        .card-title {
+            color: rgb(255, 255, 255);
+            font-family: 'Poppins';
+            font-size: xx-large;
+            font-weight: bolder;
+        }
+
+        .card-body p{
+            color:  rgb(255, 255, 255);
+            font-family: 'Poppins';
+            
+        }
+        
+    </style>
+
+
+    <title>Document</title>
+</head>
+<body>
+
+
+
+    <div class="saldoview ">
+        <div class="card border-0 "  style="width: 15rem;">
+            <div class="card-body ">
+              <h5 class="card-title">Saldo</h5>
+              <p>Rp. <span class="card-text" id="saldooutput"></span></p>
+            </div>
+          </div>
+    </div>
+
+    <div class="view">
+        <button type="button" id="depoButton" class="btn btn-primary">Deposit</button>
+        <button type="button" id="wdButton" class="btn btn-success">Withdraw</button>
+
+    </div>
+
+    <script src="bank.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
+</body>
+</html>
