@@ -1,4 +1,4 @@
-class bank {
+class BankAccount {
     constructor() {
         this.saldo = 0
         this.saldoOutput = document.getElementById("saldooutput")
@@ -49,7 +49,7 @@ class bank {
 
 }
 
-bank1 = new bank()
+bank1 = new BankAccount()
 
 
 depoButton.addEventListener("click", function() {
