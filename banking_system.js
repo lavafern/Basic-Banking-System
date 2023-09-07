@@ -18,7 +18,7 @@ class bank {
         try{
             let nominal = amount()
             if (nominal) {
-            await this.isNumeric(nominal,1000)
+            await this.isNumeric(nominal,2000)
             this.saldo += Number(nominal)
             this.saldoOutput.textContent = this.saldo
         } else {
@@ -29,14 +29,14 @@ class bank {
         }
     }
 
-    async withdraw(amount = () => prompt('Masukan jumlah saldo yang ingin anda ambil : '), isnumeric = (n) => /^[0-9]+$/.test(n)) {
+    async withdraw(amount = () => prompt('Masukan jumlah saldo yang ingin anda ambil : ')) {
         try{
             let nominal = amount()
             if (nominal) {
                 if (nominal>this.saldo) {
                     throw new Error("Saldo anda tidak cukup! ")
                 }
-                await this.isNumeric(nominal,1000)
+                await this.isNumeric(nominal,2000)
                 this.saldo -= Number(nominal)
                 this.saldoOutput.textContent = this.saldo
             } else {
@@ -52,10 +52,10 @@ class bank {
 bank1 = new bank()
 
 
-depoButton.addEventListener("click", async function() {
+depoButton.addEventListener("click", function() {
     bank1.deposit();
 });
-wdButton.addEventListener("click", async function() {
+wdButton.addEventListener("click", function() {
     bank1.withdraw();
 }); 
 
